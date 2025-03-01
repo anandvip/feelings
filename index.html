@@ -88,6 +88,27 @@
             transform: translateX(10px);
         }
 
+        .step.active {
+            animation: jitter 0.5s;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes jitter {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
         h2 {
             color: var(--secondary-light);
             margin-top: 0;
@@ -191,14 +212,14 @@
 
         <!-- Navigation Links -->
         <div class="nav-links">
-            <a href="#step1">Step 1: Pause and Name</a>
-            <a href="#step2">Step 2: Feel the Emotion</a>
-            <a href="#step3">Step 3: Create Space</a>
-            <a href="#step4">Step 4: Curiosity Questions</a>
-            <a href="#step5">Step 5: Mindful Response</a>
-            <a href="#daily-training">Daily Training</a>
-            <a href="#common-pitfalls">Common Pitfalls</a>
-            <a href="#long-term">Long-Term Benefits</a>
+            <a href="#step1" onclick="activateSection('step1')">Step 1: Pause and Name</a>
+            <a href="#step2" onclick="activateSection('step2')">Step 2: Feel the Emotion</a>
+            <a href="#step3" onclick="activateSection('step3')">Step 3: Create Space</a>
+            <a href="#step4" onclick="activateSection('step4')">Step 4: Curiosity Questions</a>
+            <a href="#step5" onclick="activateSection('step5')">Step 5: Mindful Response</a>
+            <a href="#daily-training" onclick="activateSection('daily-training')">Daily Training</a>
+            <a href="#common-pitfalls" onclick="activateSection('common-pitfalls')">Common Pitfalls</a>
+            <a href="#long-term" onclick="activateSection('long-term')">Long-Term Benefits</a>
         </div>
 
         <article>
@@ -342,6 +363,18 @@
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-theme');
+        }
+
+        function activateSection(sectionId) {
+            // Remove active class from all sections
+            document.querySelectorAll('.step').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Add active class to the clicked section
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
         }
     </script>
 </body>
