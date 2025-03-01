@@ -5,70 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindful Emotion Mastery</title>
     <style>
-        /* Cosmic Color Palette */
+        /* Color Palettes */
         :root {
-            --primary: #2A2356; /* Deep space purple */
-            --secondary: #4B8FA1; /* Calm wisdom teal */
-            --accent: #E9C46A; /* Golden awareness */
-            --background: #FFF9F0; /* Warm paper */
-            --text: #3A3A3A; /* Soft black */
+            --primary-light: #4A4E69;
+            --secondary-light: #9A8C98;
+            --accent-light: #C9ADA7;
+            --background-light: #F9F5EB;
+            --text-light: #2C3333;
+
+            --primary-dark: #9A8C98;
+            --secondary-dark: #C9ADA7;
+            --accent-dark: #F9F5EB;
+            --background-dark: #2C3333;
+            --text-dark: #F9F5EB;
         }
 
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
             margin: 0;
             padding: 20px;
-            background: var(--background);
-            color: var(--text);
+            background: var(--background-light);
+            color: var(--text-light);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
 
         h1 {
-            color: var(--primary);
+            color: var(--primary-light);
             text-align: center;
-            border-bottom: 3px solid var(--secondary);
+            border-bottom: 3px solid var(--secondary-light);
             padding-bottom: 15px;
             font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
         }
 
         /* Navigation Links */
         .nav-links {
-            text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background: rgba(75, 143, 161, 0.1);
+            position: fixed;
+            top: 20%;
+            right: 20px;
+            background: var(--background-light);
+            padding: 20px;
             border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
 
         .nav-links a {
-            color: var(--secondary);
+            color: var(--secondary-light);
             text-decoration: none;
-            margin: 0 15px;
+            display: block;
+            margin: 10px 0;
             font-size: 1.1em;
-            border-bottom: 1px dotted var(--accent);
+            border-bottom: 1px dotted var(--accent-light);
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
         .step {
             margin: 25px 0;
             padding: 20px;
-            border-left: 4px solid var(--secondary);
+            border-left: 4px solid var(--secondary-light);
             background: #f8fafc;
             border-radius: 0 8px 8px 0;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s;
         }
 
         .step:hover {
@@ -76,19 +89,19 @@
         }
 
         h2 {
-            color: var(--secondary);
+            color: var(--secondary-light);
             margin-top: 0;
         }
 
         .why {
-            background: rgba(75, 143, 161, 0.1);
+            background: rgba(154, 140, 152, 0.1);
             padding: 15px;
             border-radius: 8px;
             margin: 10px 0;
         }
 
         .example {
-            border: 1px dashed var(--accent);
+            border: 1px dashed var(--accent-light);
             padding: 15px;
             margin: 15px 0;
             border-radius: 8px;
@@ -98,42 +111,96 @@
             text-align: center;
             margin-top: 40px;
             padding: 20px;
-            color: var(--primary);
+            color: var(--primary-light);
             font-size: 0.9em;
         }
 
         a {
-            color: var(--secondary);
+            color: var(--secondary-light);
             text-decoration: none;
-            border-bottom: 1px dotted var(--accent);
+            border-bottom: 1px dotted var(--accent-light);
         }
 
         a:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
 
         /* Spiritual accents */
         .container::before {
-            content: "🕉";
+            content: "ॐ";
             font-size: 2em;
             display: block;
             text-align: center;
             opacity: 0.2;
             margin-bottom: 20px;
         }
+
+        /* Dark Theme */
+        body.dark-theme {
+            background: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        body.dark-theme .container, body.dark-theme .nav-links {
+            background: var(--background-dark);
+        }
+
+        body.dark-theme h1 {
+            color: var(--primary-dark);
+            border-bottom-color: var(--secondary-dark);
+        }
+
+        body.dark-theme .nav-links a, body.dark-theme h2, body.dark-theme .why, body.dark-theme .example, body.dark-theme footer, body.dark-theme a {
+            color: var(--secondary-dark);
+            border-color: var(--accent-dark);
+        }
+
+        body.dark-theme .step {
+            border-color: var(--secondary-dark);
+            background: #1e2127;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: var(--background-light);
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:focus {
+            outline: none;
+        }
+
+        body.dark-theme .theme-toggle {
+            background: var(--background-dark);
+        }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
     <div class="container">
         <h1>Mindful Emotion Mastery</h1>
-        
+
         <!-- Navigation Links -->
         <div class="nav-links">
-            <a href="#step1">Step 1</a>
-            <a href="#step2">Step 2</a>
-            <a href="#step3">Step 3</a>
+            <a href="#step1">Step 1: Pause and Name</a>
+            <a href="#step2">Step 2: Feel the Emotion</a>
+            <a href="#step3">Step 3: Create Space</a>
+            <a href="#step4">Step 4: Curiosity Questions</a>
+            <a href="#step5">Step 5: Mindful Response</a>
+            <a href="#daily-training">Daily Training</a>
+            <a href="#common-pitfalls">Common Pitfalls</a>
+            <a href="#long-term">Long-Term Benefits</a>
         </div>
-        
+
         <article>
             <!-- Step 1 -->
             <section class="step" id="step1">
@@ -190,7 +257,7 @@
             </section>
 
             <!-- Step 4 -->
-            <section class="step">
+            <section class="step" id="step4">
                 <h2>4. Ask Curiosity Questions</h2>
                 <p><strong>What to do:</strong></p>
                 <ul>
@@ -212,7 +279,7 @@
             </section>
 
             <!-- Step 5 -->
-            <section class="step">
+            <section class="step" id="step5">
                 <h2>5. Choose a Mindful Response</h2>
                 <p><strong>What to do:</strong></p>
                 <ul>
@@ -232,7 +299,7 @@
             </section>
 
             <!-- Daily Training -->
-            <section class="step">
+            <section class="step" id="daily-training">
                 <h2>Daily Training for Emotional Resilience</h2>
                 <p>Build your “mindfulness muscle” with these habits:</p>
                 <ul>
@@ -243,7 +310,7 @@
             </section>
 
             <!-- Common Pitfalls -->
-            <section class="step">
+            <section class="step" id="common-pitfalls">
                 <h2>Common Pitfalls to Avoid</h2>
                 <ul>
                     <li><strong>Judging emotions:</strong> Don’t scold yourself (<em>“I shouldn’t feel this way”</em>). Replace with: <em>“This is human.”</em></li>
@@ -253,7 +320,7 @@
             </section>
 
             <!-- Why This Works Long-Term -->
-            <section class="step">
+            <section class="step" id="long-term">
                 <h2>Why This Works Long-Term</h2>
                 <p>Your brain rewires itself (<strong>neuroplasticity</strong>) with consistent practice. Over time, you’ll:</p>
                 <ul>
@@ -271,5 +338,11 @@
             Created for Vipul with mindful intention
         </footer>
     </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+    </script>
 </body>
 </html>
